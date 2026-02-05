@@ -20,18 +20,17 @@ Promise.all([fetch(url1),fetch(url2),fetch(url3)])
 .then((data)=>{
     outputScreen.innerHTML='';
 
-    data.forEach((item)=>{
+    data.forEach((item,i)=>{
         if(!item.ok){
             throw new Error('Network issue')
         }
 
-        let val=item.url;
+        let val=images[i].url;
         outputScreen.innerHTML+=`<img src=${val}>`
     })
+    
 })
 .catch(err=>{
-    outputScreen.innerHTML=`<div id='error'>${err.name}:${err.message}<div>`;
-
-})
-})
+    outputScreen.innerHTML=`<div id='error'>${err.name}:${err.message}<div>`;})
+});
 
